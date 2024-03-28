@@ -3,11 +3,13 @@ import { TypeEnum } from "../../enums/type.enum"
 import { IsDateFormat } from "../../validators/IsDateFormat.validator"
 import { ApiProperty } from "@nestjs/swagger"
 import { stringValidationErrorMessage } from "src/validators/stringValidator"
+import { numberValidationErrorMessage } from "../../validators/numberValidator"
+import { enumValidationErrorMessage } from "../../validators/enumValidator"
 
 export class CreateRecordDto {
 	@IsString({ message: stringValidationErrorMessage })
 	name: string
-	@IsEnum(TypeEnum, { message: (args) => `'${args.property}' must be one of following values: ${Object.keys(TypeEnum)}. Received value is '${args.value}' of type '${typeof args.value}'` })
+	@IsEnum(TypeEnum, { message: (args) => enumValidationErrorMessage(TypeEnum, args) })
 	type: TypeEnum
 	// @IsString({ message: (args) => `'${args.property}' must be of type STRING. Received value is '${args.value}' of type '${typeof args.value}'`, })
 	// @IsDateFormat()
@@ -18,6 +20,6 @@ export class CreateRecordDto {
 	@IsDateFormat()
 	@ApiProperty({ example: '2024-03-07T00:00:00.000Z | 2024-03-07' })
 	dateIsoUtc: string
-	@IsNumber({}, { message: (args) => `'${args.property}' must be of type NUMBER. Received value is '${args.value}' of type '${typeof args.value}'`, })
+	@IsNumber({}, { message: numberValidationErrorMessage })
 	value: number
 }
