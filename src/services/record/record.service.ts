@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateRecordDto } from '../../dtos/auth/createRecord.dto';
+import { CreateRecordDto } from '../../dtos/record/createRecord.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Record, RecordSchema } from '../../schemas-mongoose/record.schema';
 import { Model } from 'mongoose';
-import { UpdateRecordDto } from '../../dtos/auth/updateRecord.dto';
+import { UpdateRecordDto } from '../../dtos/record/updateRecord.dto';
 
 export interface RecordWithId extends Record {
 	_id: string

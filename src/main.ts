@@ -11,14 +11,8 @@ async function bootstrap() {
 	//   app.useGlobalFilters(new ErrorFilter(loggerService))
 	const config = new DocumentBuilder()
 		.setTitle('API - CRUD e Auth')
-		.setDescription('Endpoints para login, cadastro e CRUD com validação.')
+		.setDescription('Endpoints para login, cadastro e CRUD com validação. Feito por Luiz do Verde.')
 		.setVersion('1.0')
-		// .addBearerAuth({
-		// 	description: 'Informar o JWT para autorizar o acesso',
-		// 	name: 'Authorization',
-		// 	type: 'http',
-		// 	in: 'Header',
-		// })
 		.addBearerAuth()
 		.addSecurityRequirements('bearer')
 		.build();

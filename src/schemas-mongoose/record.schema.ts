@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument } from "mongoose";
-import { CreateRecordDto } from "../dtos/auth/createRecord.dto";
+import { CreateRecordDto } from "../dtos/record/createRecord.dto";
 import { TypeEnum } from "../enums/type.enum";
 
 export type ErrorLogDocument = HydratedDocument<Record>;

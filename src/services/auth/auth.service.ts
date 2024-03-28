@@ -6,6 +6,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User } from '../../schemas-mongoose/user.schema';
 import { Model } from 'mongoose';
 import { UpdateUserDto } from '../../dtos/auth/updateUser.dto';
+import { LoginResponse } from '../../responses/login.response';
 
 interface UserWithId extends User {
 	_id: string
@@ -20,7 +21,7 @@ export class AuthService {
 		private userModel: Model<User>,
 	) { }
 
-	async login(loginDto: LoginDto) {
+	async login(loginDto: LoginDto): Promise<LoginResponse> {
 		const userFound = await this.userModel.findOne<UserWithId>({ email: loginDto.email });
 		console.log('userFound', userFound)
 
@@ -31,7 +32,8 @@ export class AuthService {
 			throw new UnauthorizedException();
 		}
 		const accessToken = await this.jwtService.signAsync(loginDto)
-		return { accessToken };
+		const user = { _id: userFound._id, fullName: userFound.fullName, email: userFound.email }
+		return { accessToken, user };
 	}
 
 	async register(registerDto: RegisterUserDto) {
