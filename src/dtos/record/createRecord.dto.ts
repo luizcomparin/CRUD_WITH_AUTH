@@ -8,11 +8,11 @@ export class CreateRecordDto {
 	name: string
 	@IsEnum(TypeEnum, { message: (args) => `'${args.property}' must be one of following values: ${Object.keys(TypeEnum)}. Received value is '${args.value}' of type '${typeof args.value}'` })
 	type: TypeEnum
-	@IsString({ message: (args) => `'${args.property}' must be of type STRING. Received value is '${args.value}' of type '${typeof args.value}'`, })
-	@IsDateFormat()
-	@ValidateIf((object, value) => (value !== null && value !== undefined))
-	@ApiProperty({ example: '2024-03-07T00:00:00.000Z | 2024-03-07' })
-	createdAtIsoUtc: string
+	// @IsString({ message: (args) => `'${args.property}' must be of type STRING. Received value is '${args.value}' of type '${typeof args.value}'`, })
+	// @IsDateFormat()
+	// @ValidateIf((object, value) => (value !== null && value !== undefined))
+	// @ApiProperty({ example: '2024-03-07T00:00:00.000Z | 2024-03-07' })
+	// createdAtIsoUtc: string
 	@IsString({ message: (args) => `'${args.property}' must be of type STRING. Received value is '${args.value}' of type '${typeof args.value}'`, })
 	@IsDateFormat()
 	@ApiProperty({ example: '2024-03-07T00:00:00.000Z | 2024-03-07' })
